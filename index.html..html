@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jejak Makanan – Media Pembelajaran Interaktif Organ Pencernaan Manusia</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Lewati ke konten utama</a>
+
+<div class="app">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="side" id="side" aria-label="Navigasi">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <strong>Jejak Makanan</strong>
+        <small>IPA · Organ Pencernaan</small>
+      </div>
+    </div>
+    <nav aria-label="Langkah pembelajaran">
+      <ol id="nav" class="nav"></ol>
+    </nav>
+    <div class="side-foot">
+      <div class="meter" role="progressbar" aria-label="Kemajuan belajar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="meter">
+        <span id="meterBar"></span>
+      </div>
+      <p id="meterText">0 dari 7 langkah selesai</p>
+      <p id="whoText" class="who"></p>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <div class="content">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-controls="side" aria-expanded="false" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+      <strong id="topTitle">Jejak Makanan</strong>
+      <span id="topProg" class="top-prog"></span>
+    </header>
+
+    <main id="main" tabindex="-1">
+
+      <!-- ========== BERANDA ========== -->
+      <section class="page" id="p-beranda" data-title="Beranda" hidden>
+        <div class="hero">
+          <div class="hero-text">
+            <h1>Jejak Makanan</h1>
+            <p class="lead">Ikuti sepotong roti dari mulut sampai keluar dari tubuh. Kamu akan menjelajahi organ pencernaan manusia, mencoba simulasi, lalu mengukur sejauh mana pemahamanmu bertumbuh.</p>
+            <form id="startForm" class="start">
+              <label for="nameInput">Nama kamu</label>
+              <div class="start-row">
+                <input id="nameInput" type="text" autocomplete="name" maxlength="40" placeholder="Tuliskan namamu">
+                <button class="btn" type="submit">Mulai belajar</button>
+              </div>
+            </form>
+          </div>
+          <div class="hero-art" id="heroArt" aria-hidden="true"></div>
+        </div>
+
+        <div class="two">
+          <article class="box">
+            <h2>Tujuan pembelajaran</h2>
+            <p>Setelah menyelesaikan media ini, kamu mampu:</p>
+            <ul class="tick">
+              <li>menyebutkan organ saluran pencernaan dan kelenjar pencernaan beserta fungsinya;</li>
+              <li>membedakan pencernaan mekanik dan kimiawi serta menjelaskan peran enzim;</li>
+              <li>menjelaskan urutan perjalanan makanan dan penyerapan sari makanan;</li>
+              <li>menjelaskan penyebab dan pencegahan gangguan pencernaan umum.</li>
+            </ul>
+          </article>
+          <article class="box">
+            <h2>Cara belajar</h2>
+            <ul class="tick">
+              <li>Ikuti langkah dari menu di sebelah kiri secara berurutan.</li>
+              <li>Klik organ pada gambar untuk membaca penjelasannya.</li>
+              <li>Jawabanmu tersimpan otomatis di peramban ini, jadi kamu boleh menutup dan melanjutkan nanti.</li>
+              <li>Di akhir, simpan hasilmu sebagai berkas teks atau cetak.</li>
+            </ul>
+          </article>
+        </div>
+
+        <h2 class="section-title">Alur belajar</h2>
+        <ol class="flow" id="flow"></ol>
+      </section>
+
+      <!-- ========== 1. APERSEPSI ========== -->
+      <section class="page" id="p-apersepsi" data-title="Apersepsi" hidden>
+        <header class="page-head">
+          <h1>Apersepsi: sarapan pagi Rina</h1>
+          <p class="lead">Hubungkan pengalaman sehari-hari dengan materi yang akan kamu pelajari.</p>
+        </header>
+
+        <article class="box story">
+          <p>Pagi ini Rina sarapan nasi, telur dadar, dan sepotong tempe goreng. Satu jam kemudian ia tidak lagi lapar dan punya tenaga untuk belajar di sekolah. Padahal makanan yang ia telan masih berupa nasi, telur, dan tempe yang utuh sebelum dikunyah.</p>
+          <p>Bagaimana tubuh Rina mengubah sarapan itu menjadi tenaga?</p>
+        </article>
+
+        <h2 class="section-title">Coba dulu: tebak jalurnya</h2>
+        <p>Menurutmu, organ mana saja yang <strong>dilewati langsung</strong> oleh sarapan Rina? Pilih semua yang kamu anggap benar.</p>
+        <div id="predChips" class="chips" role="group" aria-label="Pilihan organ"></div>
+        <div class="actions">
+          <button class="btn" id="predCheck" type="button">Cek dugaanku</button>
+        </div>
+        <div id="predResult" class="callout" role="status" aria-live="polite" hidden></div>
+
+        <h2 class="section-title">Pertanyaan pemantik</h2>
+        <p>Tuliskan dugaanmu dengan kata-katamu sendiri. Tidak ada jawaban salah di sini.</p>
+        <div class="fields">
+          <label for="ap1">1. Ke mana perginya makanan setelah ditelan?</label>
+          <textarea id="ap1" rows="3" data-key="ap1"></textarea>
+          <label for="ap2">2. Mengapa nasi yang dikunyah lama terasa manis?</label>
+          <textarea id="ap2" rows="3" data-key="ap2"></textarea>
+          <label for="ap3">3. Mengapa makanan harus dipecah menjadi bagian yang sangat kecil sebelum dapat dimanfaatkan tubuh?</label>
+          <textarea id="ap3" rows="3" data-key="ap3"></textarea>
+        </div>
+
+        <article class="box try">
+          <h3>Eksperimen mini (opsional)</h3>
+          <p>Kunyah sepotong nasi atau roti tawar selama satu menit tanpa menelannya. Bagaimana rasanya di awal dan di akhir? Simpan pengamatanmu untuk dicocokkan dengan materi.</p>
+        </article>
+
+        <div class="actions end">
+          <button class="btn" type="button" data-go="awal" id="apNext">Lanjut ke Asesmen Awal</button>
+        </div>
+      </section>
+
+      <!-- ========== 2. ASESMEN AWAL ========== -->
+      <section class="page" id="p-awal" data-title="Asesmen Awal" hidden>
+        <header class="page-head">
+          <h1>Asesmen awal</h1>
+          <p class="lead">Delapan soal singkat untuk mengetahui pengetahuan awalmu. Nilai ini tidak menurunkan apa pun; ia hanya menjadi titik awal untuk melihat perkembanganmu.</p>
+        </header>
+        <form id="preForm" novalidate>
+          <div id="preQuiz" class="qlist"></div>
+          <p id="preWarn" class="warn" role="alert" hidden></p>
+          <div class="actions">
+            <button class="btn" type="submit" id="preSubmit">Kumpulkan jawaban</button>
+          </div>
+        </form>
+        <div id="preResult" class="result" hidden></div>
+        <div class="actions end" id="preNext" hidden>
+          <button class="btn" type="button" data-go="materi">Lanjut ke Materi Pokok</button>
+        </div>
+      </section>
+
+      <!-- ========== 3. MATERI POKOK ========== -->
+      <section class="page" id="p-materi" data-title="Materi Pokok" hidden>
+        <header class="page-head">
+          <h1>Materi pokok</h1>
+          <p class="lead">Sistem pencernaan terdiri atas saluran pencernaan dan kelenjar pencernaan. Jelajahi keduanya.</p>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Bagian materi" id="materiTabs">
+          <button role="tab" id="mt-1" aria-controls="mp-1" aria-selected="true">Organ pencernaan</button>
+          <button role="tab" id="mt-2" aria-controls="mp-2" aria-selected="false" tabindex="-1">Cara kerja dan enzim</button>
+          <button role="tab" id="mt-3" aria-controls="mp-3" aria-selected="false" tabindex="-1">Gangguan dan kesehatan</button>
+        </div>
+
+        <!-- Tab 1 -->
+        <div role="tabpanel" id="mp-1" aria-labelledby="mt-1" class="tabpanel">
+          <p class="hint">Klik atau tekan Enter pada organ di gambar atau pada daftar untuk membaca penjelasannya. <span id="seenCount" class="seen">Organ dijelajahi: 0 dari 9</span></p>
+          <div class="split">
+            <div class="diagram-wrap" id="materiDiagram"></div>
+            <div>
+              <div id="organPanel" class="organ-panel" aria-live="polite">
+                <h2>Pilih sebuah organ</h2>
+                <p>Mulailah dari <strong>mulut</strong>, lalu ikuti jalur makanan ke bawah.</p>
+              </div>
+              <div id="organChips" class="chips small" role="group" aria-label="Daftar organ"></div>
+              <div class="legend">
+                <span><i class="lg lg-tract"></i>Saluran pencernaan: dilewati makanan</span>
+                <span><i class="lg lg-gland"></i>Kelenjar pencernaan: tidak dilewati makanan</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2 -->
+        <div role="tabpanel" id="mp-2" aria-labelledby="mt-2" class="tabpanel" hidden>
+          <div class="two">
+            <article class="box">
+              <h2>Pencernaan mekanik</h2>
+              <p>Makanan dihancurkan menjadi potongan lebih kecil tanpa mengubah susunan kimianya.</p>
+              <p class="small-note">Contoh: mengunyah di mulut, meremas dan mengaduk oleh lambung, gerak peristaltik.</p>
+            </article>
+            <article class="box">
+              <h2>Pencernaan kimiawi</h2>
+              <p>Enzim memecah molekul besar menjadi molekul kecil yang bisa diserap.</p>
+              <p class="small-note">Contoh: amilum menjadi maltosa, protein menjadi asam amino, lemak menjadi asam lemak dan gliserol.</p>
+            </article>
+          </div>
+
+          <h2 class="section-title">Zat gizi dan hasil akhir pencernaannya</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Zat gizi</th><th>Hasil akhir</th><th>Diserap menuju</th></tr></thead>
+              <tbody>
+                <tr><td>Karbohidrat (amilum)</td><td>Glukosa</td><td>Kapiler darah</td></tr>
+                <tr><td>Protein</td><td>Asam amino</td><td>Kapiler darah</td></tr>
+                <tr><td>Lemak</td><td>Asam lemak dan gliserol</td><td>Pembuluh limfa (lakteal)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 class="section-title">Enzim pencernaan</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Enzim</th><th>Penghasil</th><th>Tempat kerja</th><th>Substrat → hasil</th></tr></thead>
+              <tbody>
+                <tr><td>Amilase ludah</td><td>Kelenjar ludah</td><td>Mulut</td><td>Amilum → maltosa</td></tr>
+                <tr><td>Pepsin</td><td>Lambung</td><td>Lambung (asam)</td><td>Protein → pepton</td></tr>
+                <tr><td>Amilase pankreas</td><td>Pankreas</td><td>Usus halus</td><td>Amilum → maltosa</td></tr>
+                <tr><td>Tripsin</td><td>Pankreas</td><td>Usus halus</td><td>Protein → peptida</td></tr>
+                <tr><td>Lipase</td><td>Pankreas</td><td>Usus halus</td><td>Lemak → asam lemak + gliserol</td></tr>
+                <tr><td>Maltase</td><td>Dinding usus halus</td><td>Usus halus</td><td>Maltosa → glukosa</td></tr>
+                <tr><td>Peptidase (erepsin)</td><td>Dinding usus halus</td><td>Usus halus</td><td>Peptida → asam amino</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="callout">Empedu bukan enzim. Empedu hanya membuat lemak pecah menjadi butiran kecil (emulsi) agar lipase lebih mudah bekerja.</p>
+
+          <h2 class="section-title">Enzim itu pemilih</h2>
+          <p>Setiap enzim bekerja paling baik pada pH dan suhu tertentu. Pepsin menyukai suasana asam di lambung, sedangkan tripsin menyukai suasana basa di usus halus. Suhu terlalu tinggi merusak enzim secara permanen (denaturasi). Buktikan sendiri di <button class="link" type="button" data-go="simulasi">Simulasi: Laboratorium enzim</button>.</p>
+        </div>
+
+        <!-- Tab 3 -->
+        <div role="tabpanel" id="mp-3" aria-labelledby="mt-3" class="tabpanel" hidden>
+          <h2 class="section-title">Gangguan pada sistem pencernaan</h2>
+          <div class="acc">
+            <details>
+              <summary>Maag (gastritis)</summary>
+              <p><strong>Apa itu:</strong> peradangan pada dinding lambung.</p>
+              <p><strong>Penyebab umum:</strong> telat makan, makanan terlalu pedas atau asam, stres, infeksi bakteri <em>Helicobacter pylori</em>, dan penggunaan obat tertentu.</p>
+              <p><strong>Pencegahan:</strong> makan teratur, hindari makanan sangat pedas, dan kelola stres.</p>
+            </details>
+            <details>
+              <summary>Diare</summary>
+              <p><strong>Apa itu:</strong> feses encer dan sering karena usus besar tidak sempat menyerap air.</p>
+              <p><strong>Penyebab umum:</strong> infeksi kuman dari makanan atau minuman yang tidak bersih.</p>
+              <p><strong>Pencegahan:</strong> cuci tangan dengan sabun, minum air matang, dan jaga kebersihan makanan. Banyak minum untuk mengganti cairan yang hilang; jika berat atau berlangsung lama, periksakan ke tenaga kesehatan.</p>
+            </details>
+            <details>
+              <summary>Sembelit (konstipasi)</summary>
+              <p><strong>Apa itu:</strong> feses keras dan sulit dikeluarkan.</p>
+              <p><strong>Penyebab umum:</strong> kurang serat, kurang minum, kurang bergerak, dan sering menahan buang air besar.</p>
+              <p><strong>Pencegahan:</strong> makan sayur dan buah, minum cukup, berolahraga, dan jangan menunda buang air besar.</p>
+            </details>
+            <details>
+              <summary>Apendisitis (radang usus buntu)</summary>
+              <p><strong>Apa itu:</strong> peradangan pada apendiks, kantung kecil di dekat sekum.</p>
+              <p><strong>Tanda:</strong> nyeri yang makin berat di perut kanan bawah, sering disertai demam dan mual.</p>
+              <p><strong>Tindakan:</strong> segera ke dokter. Jangan menunggu sembuh sendiri.</p>
+            </details>
+            <details>
+              <summary>Hepatitis A</summary>
+              <p><strong>Apa itu:</strong> peradangan hati akibat virus yang menular lewat makanan atau minuman yang tercemar.</p>
+              <p><strong>Pencegahan:</strong> kebersihan tangan dan makanan, air minum yang aman, serta vaksinasi sesuai anjuran tenaga kesehatan.</p>
+            </details>
+          </div>
+          <p class="small-note">Informasi ini untuk belajar dan bukan pengganti pemeriksaan dokter.</p>
+
+          <h2 class="section-title">Kebiasaan yang menjaga pencernaan</h2>
+          <ul class="tick">
+            <li>Makan teratur, termasuk sarapan, dan kunyah makanan perlahan sampai halus.</li>
+            <li>Cukupi serat dari sayur, buah, dan kacang-kacangan.</li>
+            <li>Minum air putih yang cukup setiap hari.</li>
+            <li>Cuci tangan dengan sabun sebelum makan dan sesudah dari kamar mandi.</li>
+            <li>Pilih makanan dan jajanan yang bersih; hindari makanan yang sudah basi.</li>
+            <li>Rajin bergerak dan jangan menahan buang air besar.</li>
+          </ul>
+        </div>
+
+        <div class="actions end">
+          <button class="btn" type="button" data-go="simulasi">Lanjut ke Simulasi</button>
+        </div>
+      </section>
+
+      <!-- ========== 4. SIMULASI ========== -->
+      <section class="page" id="p-simulasi" data-title="Simulasi" hidden>
+        <header class="page-head">
+          <h1>Simulasi</h1>
+          <p class="lead">Tiga percobaan interaktif. Selesaikan ketiganya untuk menandai langkah ini selesai.</p>
+        </header>
+
+        <ul class="checks" id="simChecks" aria-label="Kemajuan simulasi">
+          <li id="sc-1"><span></span>Perjalanan makanan sampai akhir</li>
+          <li id="sc-2"><span></span>Mengubah kondisi di laboratorium enzim</li>
+          <li id="sc-3"><span></span>Menyusun urutan dengan benar</li>
+        </ul>
+
+        <div class="tabs" role="tablist" aria-label="Pilihan simulasi" id="simTabs">
+          <button role="tab" id="st-1" aria-controls="sp-1" aria-selected="true">Perjalanan makanan</button>
+          <button role="tab" id="st-2" aria-controls="sp-2" aria-selected="false" tabindex="-1">Laboratorium enzim</button>
+          <button role="tab" id="st-3" aria-controls="sp-3" aria-selected="false" tabindex="-1">Susun urutan</button>
+        </div>
+
+        <!-- Sim 1 -->
+        <div role="tabpanel" id="sp-1" aria-labelledby="st-1" class="tabpanel">
+          <fieldset class="foodpick">
+            <legend>Pilih makanan yang kamu ikuti</legend>
+            <div id="foodPick" class="seg"></div>
+          </fieldset>
+          <div class="split">
+            <div class="diagram-wrap" id="simDiagram"></div>
+            <div class="sim-panel">
+              <ol class="stepper" id="stepper" aria-label="Tahap perjalanan"></ol>
+              <div id="stagePanel" class="stage-panel" aria-live="polite"></div>
+              <div class="actions">
+                <button class="btn ghost" type="button" id="stPrev">Sebelumnya</button>
+                <button class="btn" type="button" id="stNext">Berikutnya</button>
+                <button class="btn ghost" type="button" id="stAuto">Putar otomatis</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sim 2 -->
+        <div role="tabpanel" id="sp-2" aria-labelledby="st-2" class="tabpanel" hidden>
+          <p>Atur pH, suhu, dan waktu reaksi. Amati molekul substrat (kuning) berubah menjadi hasil (hijau) dan lihat seberapa aktif enzimnya.</p>
+          <fieldset class="foodpick">
+            <legend>Pilih enzim</legend>
+            <div id="enzPick" class="seg"></div>
+          </fieldset>
+          <div class="lab">
+            <div class="lab-tube">
+              <svg id="tubeSvg" viewBox="0 0 140 240" role="img" aria-label="Tabung reaksi berisi substrat dan hasil"></svg>
+              <p id="tubeCaption" class="small-note"></p>
+            </div>
+            <div class="lab-controls">
+              <div class="slider">
+                <label for="rPh">pH: <output id="oPh">7,0</output></label>
+                <input type="range" id="rPh" min="0" max="14" step="0.1" value="7">
+              </div>
+              <div class="slider">
+                <label for="rT">Suhu: <output id="oT">37</output> °C</label>
+                <input type="range" id="rT" min="0" max="80" step="1" value="37">
+              </div>
+              <div class="slider">
+                <label for="rTime">Waktu reaksi: <output id="oTime">10</output> menit</label>
+                <input type="range" id="rTime" min="0" max="30" step="1" value="10">
+              </div>
+              <div class="gauges">
+                <div class="gauge"><span>Aktivitas enzim</span><div class="bar"><i id="gAct"></i></div><b id="vAct">0%</b></div>
+                <div class="gauge"><span>Substrat tercerna</span><div class="bar"><i id="gDig" class="alt"></i></div><b id="vDig">0%</b></div>
+              </div>
+              <p id="labMsg" class="callout" role="status" aria-live="polite"></p>
+              <div class="actions">
+                <button class="btn ghost" type="button" id="labOpt">Tampilkan kondisi optimum</button>
+                <button class="btn ghost" type="button" id="labReset">Atur ulang</button>
+              </div>
+            </div>
+            <div class="lab-chart">
+              <svg id="phChart" viewBox="0 0 320 180" role="img" aria-label="Grafik aktivitas enzim terhadap pH"></svg>
+              <p class="small-note">Grafik: aktivitas enzim pada berbagai pH dengan suhu saat ini. Titik menunjukkan pH yang kamu pilih.</p>
+            </div>
+          </div>
+          <article class="box try">
+            <h3>Tantangan</h3>
+            <p>Temukan kondisi yang membuat <strong>pepsin</strong> mencerna lebih dari 90% protein dalam 10 menit. Lalu coba kondisi yang sama untuk tripsin. Apa bedanya, dan mengapa?</p>
+          </article>
+        </div>
+
+        <!-- Sim 3 -->
+        <div role="tabpanel" id="sp-3" aria-labelledby="st-3" class="tabpanel" hidden>
+          <p>Susun jalur makanan dari awal hingga akhir. Klik organ sesuai urutan yang menurutmu benar.</p>
+          <div class="order">
+            <div>
+              <h3>Pilihan organ</h3>
+              <div id="ordPool" class="chips"></div>
+            </div>
+            <div>
+              <h3>Urutanmu</h3>
+              <ol id="ordList" class="ordlist"></ol>
+            </div>
+          </div>
+          <p id="ordMsg" class="callout" role="status" aria-live="polite" hidden></p>
+          <div class="actions">
+            <button class="btn" type="button" id="ordCheck">Periksa urutan</button>
+            <button class="btn ghost" type="button" id="ordUndo">Hapus yang terakhir</button>
+            <button class="btn ghost" type="button" id="ordReset">Acak ulang</button>
+          </div>
+        </div>
+
+        <div class="actions end">
+          <button class="btn" type="button" data-go="kuis">Lanjut ke Kuis</button>
+        </div>
+      </section>
+
+      <!-- ========== 5. KUIS ========== -->
+      <section class="page" id="p-kuis" data-title="Kuis" hidden>
+        <header class="page-head">
+          <h1>Kuis</h1>
+          <p class="lead">Sepuluh soal dengan umpan balik langsung. Pilih satu jawaban dan baca penjelasannya.</p>
+        </header>
+        <div class="quiz-bar">
+          <span id="quizProg">Terjawab 0 dari 10</span>
+          <span id="quizScore" class="score-pill">Skor 0</span>
+        </div>
+        <div id="quizBox" class="qlist"></div>
+        <div id="quizResult" class="result" hidden></div>
+        <div class="actions end">
+          <button class="btn ghost" type="button" id="quizRetry" hidden>Ulangi kuis</button>
+          <button class="btn" type="button" data-go="akhir" id="quizNext" hidden>Lanjut ke Asesmen Akhir</button>
+        </div>
+      </section>
+
+      <!-- ========== 6. ASESMEN AKHIR ========== -->
+      <section class="page" id="p-akhir" data-title="Asesmen Akhir" hidden>
+        <header class="page-head">
+          <h1>Asesmen akhir</h1>
+          <p class="lead">Sepuluh soal pilihan ganda dan dua soal uraian. Kerjakan sendiri agar hasilnya menggambarkan pemahamanmu.</p>
+        </header>
+        <form id="postForm" novalidate>
+          <h2 class="section-title">A. Pilihan ganda</h2>
+          <div id="postQuiz" class="qlist"></div>
+          <h2 class="section-title">B. Uraian</h2>
+          <div id="postEssay" class="fields"></div>
+          <p id="postWarn" class="warn" role="alert" hidden></p>
+          <div class="actions">
+            <button class="btn" type="submit" id="postSubmit">Kumpulkan jawaban</button>
+          </div>
+        </form>
+        <div id="postResult" class="result" hidden></div>
+        <div class="actions end" id="postNext" hidden>
+          <button class="btn" type="button" data-go="refleksi">Lanjut ke Refleksi</button>
+        </div>
+      </section>
+
+      <!-- ========== 7. REFLEKSI ========== -->
+      <section class="page" id="p-refleksi" data-title="Refleksi" hidden>
+        <header class="page-head">
+          <h1>Refleksi</h1>
+          <p class="lead">Berhenti sejenak dan lihat apa yang sudah kamu pelajari.</p>
+        </header>
+
+        <h2 class="section-title">Perjalanan nilaimu</h2>
+        <div id="summary" class="summary"></div>
+
+        <form id="refForm" novalidate>
+          <h2 class="section-title">Seberapa yakin kamu sekarang?</h2>
+          <div id="likert" class="likert"></div>
+          <h2 class="section-title">Catatan refleksi</h2>
+          <div id="refOpen" class="fields"></div>
+          <div class="actions">
+            <button class="btn" type="submit">Simpan refleksi</button>
+          </div>
+        </form>
+        <div id="refResult" class="callout" role="status" aria-live="polite" hidden></div>
+
+        <h2 class="section-title">Simpan hasil</h2>
+        <div class="actions">
+          <button class="btn" type="button" id="dlBtn">Unduh hasil (.txt)</button>
+          <button class="btn ghost" type="button" id="printBtn">Cetak</button>
+          <button class="btn ghost danger" type="button" id="resetBtn">Mulai ulang semua</button>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="foot">
+      Media Pembelajaran Interaktif · IPA SMP · Organ Pencernaan Manusia. Berjalan sepenuhnya di peramban, tanpa internet.
+    </footer>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

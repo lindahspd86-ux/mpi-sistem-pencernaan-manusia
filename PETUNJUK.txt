@@ -1,0 +1,72 @@
+JEJAK MAKANAN
+Media Pembelajaran Interaktif (MPI) — Organ Pencernaan Manusia
+IPA SMP (Fase D, kelas 8)
+=====================================================================
+
+CARA MENJALANKAN
+1. Ekstrak (unzip) berkas ZIP sampai semua folder terlihat.
+2. Buka berkas "index.html" dengan peramban (Chrome, Edge, Firefox, Safari).
+3. Tidak perlu internet, tidak perlu instalasi. Bisa dijalankan dari
+   flashdisk, laptop, atau diunggah ke hosting/LMS (Google Sites,
+   Moodle, dsb.) dengan seluruh folder tetap utuh.
+
+JANGAN membuka index.html langsung dari dalam ZIP; ekstrak dulu.
+
+ISI MEDIA (7 langkah berurutan)
+1. Apersepsi        Cerita "sarapan pagi Rina", tebak jalur makanan,
+                    3 pertanyaan pemantik, eksperimen mini mengunyah nasi.
+2. Asesmen Awal     8 soal pilihan ganda (diagnostik), umpan balik singkat.
+3. Materi Pokok     Diagram organ interaktif (9 organ), pencernaan mekanik
+                    dan kimiawi, tabel enzim, gangguan pencernaan, kebiasaan sehat.
+4. Simulasi         (a) Perjalanan makanan: ikuti nasi/telur/mentega tahap demi tahap,
+                    (b) Laboratorium enzim: atur pH, suhu, waktu pada 4 enzim,
+                    (c) Susun urutan jalur makanan.
+5. Kuis             10 soal dengan umpan balik dan pembahasan langsung.
+6. Asesmen Akhir    10 soal pilihan ganda + 2 soal uraian.
+7. Refleksi         Ringkasan nilai awal-kuis-akhir, N-Gain, skala keyakinan,
+                    catatan refleksi, unduh hasil (.txt), cetak.
+
+TUJUAN PEMBELAJARAN
+- Menyebutkan organ saluran dan kelenjar pencernaan beserta fungsinya.
+- Membedakan pencernaan mekanik dan kimiawi serta menjelaskan peran enzim.
+- Menjelaskan urutan perjalanan makanan dan penyerapan sari makanan.
+- Menjelaskan penyebab dan pencegahan gangguan pencernaan umum.
+
+PANDUAN UNTUK GURU
+- Hasil siswa tersimpan otomatis di peramban perangkat yang dipakai
+  (localStorage). Jika perangkat dipakai bergantian, minta siswa menekan
+  "Mulai ulang semua" di halaman Refleksi setelah menyimpan hasil.
+- Siswa dapat mengunduh hasil (nama, nilai awal/kuis/akhir, N-Gain,
+  jawaban apersepsi, uraian, dan refleksi) sebagai berkas .txt untuk
+  dikumpulkan ke guru.
+- Nilai otomatis hanya untuk soal pilihan ganda. Soal uraian dinilai guru.
+- N-Gain = (skor akhir − skor awal) / (100 − skor awal).
+  Kategori: >= 0,70 tinggi; 0,30–0,69 sedang; < 0,30 rendah.
+- Usulan rubrik uraian (skor 0–4 per soal):
+    Soal 1: 4 = >= 4 organ berurutan benar + proses tiap organ; 3 = 3 organ;
+            2 = 2 organ; 1 = menyebut organ tanpa proses; 0 = tidak relevan.
+    Soal 2: 1 poin per saran yang tepat (maks. 3) + 1 poin jika alasan
+            ilmiahnya benar (mis. serat memperlancar feses, air melunakkan feses,
+            mengunyah halus membantu pencernaan mekanik).
+
+MENGUBAH SOAL DAN MATERI
+Semua teks, soal, pilihan jawaban, kunci, dan pembahasan ada di:
+    js/data.js
+Kunci jawaban ditulis dengan "a" (indeks opsi benar, mulai dari 0):
+    a: 0 = opsi A, a: 1 = opsi B, a: 2 = opsi C, a: 3 = opsi D.
+Pastikan tanda kutip dan koma tetap utuh setelah mengedit.
+Gunakan editor teks biasa (Notepad, VS Code); jangan memakai Word.
+
+STRUKTUR BERKAS
+index.html     halaman utama
+css/style.css  tampilan
+js/data.js     konten dan bank soal (boleh diedit guru)
+js/app.js      logika program (tidak perlu diubah)
+
+CATATAN
+- Informasi gangguan pencernaan bersifat edukatif, bukan pengganti
+  pemeriksaan dokter.
+- Angka seperti panjang usus dan pH bersifat perkiraan umum untuk
+  orang dewasa.
+- Mendukung navigasi papan ketik (Tab, Enter, tanda panah pada tab)
+  dan menghormati pengaturan "kurangi gerakan" pada perangkat.
